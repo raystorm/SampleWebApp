@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Login Form</title>
+</head>
+<body>
+  <wicket:panel>
+      <form wicket:id="login">
+          <div>
+            <span>User: </span><input type="text" wicket:id="userName"/>
+          </div>
+          <div>
+            <span>Password: </span><input type="text" wicket:id="pass"/>
+          </div>
+          <div>
+              <input type="submit" value="Log in"/>
+          </div>
+      </form>
+      <span wicket:id="feedback" />
+  </wicket:panel>
+</body>
+</html>
