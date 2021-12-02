@@ -19,13 +19,21 @@ import org.apache.wicket.request.resource.IResource;
 public class SampleAuthZ implements IAuthorizationStrategy,
                                     IUnauthorizedComponentInstantiationListener
 {
+    private boolean isSecurePackageClass(Class clazz)
+    {
+       return clazz.getPackageName()
+                   .startsWith("com.github.raystorm.sample.pages.secure");
+    }
+
     @Override
     public <T extends IRequestableComponent> boolean isInstantiationAuthorized(Class<T> componentClass)
     {
        if ( componentClass.isAssignableFrom(WebPage.class)
-         && componentClass.getPackageName()
-                          .startsWith("com.github.raystorm.sample.pages.secure"))
-       { return SampleSession.get().isAuthenticated(); }
+         && isSecurePackageClass(componentClass) )
+       {
+           System.out.println("Checking Authentication for: " + componentClass.getSimpleName());
+           return SampleSession.get().isAuthenticated();
+       }
        return true;
     }
 
@@ -33,11 +41,21 @@ public class SampleAuthZ implements IAuthorizationStrategy,
 
     @Override
     public boolean isActionAuthorized(Component component, Action action)
-    { return true; }
+    {
+        if ( component instanceof WebPage
+          && isSecurePackageClass(component.getClass()) )
+        { return SampleSession.get().isAuthenticated(); }
+        return true;
+    }
 
     @Override
     public boolean isResourceAuthorized(IResource resource, PageParameters parameters)
-    { return true; }
+    {
+        if ( resource instanceof WebPage
+          && isSecurePackageClass(resource.getClass()) )
+        { return SampleSession.get().isAuthenticated(); }
+        return true;
+    }
 
     @Override
     public void onUnauthorizedInstantiation(Component component)

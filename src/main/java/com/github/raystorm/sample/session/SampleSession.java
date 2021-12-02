@@ -11,7 +11,7 @@ public class SampleSession extends WebSession
     public static SampleSession get()
     { return (SampleSession) Session.get(); }
 
-    private SampleUser user;
+    private SampleUser user = null;
 
     public SampleSession(Request request) { super(request); }
 

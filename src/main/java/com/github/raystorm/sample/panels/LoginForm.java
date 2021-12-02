@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class LoginForm extends StatelessForm
@@ -19,10 +20,10 @@ public class LoginForm extends StatelessForm
 
     public LoginForm(final String id)
     {
-        super(id);
-        setModel(new CompoundPropertyModel(this));
-        add(new TextField<String>(userName));
-        add(new PasswordTextField(pass));
+       super(id);
+       setModel(new CompoundPropertyModel(this));
+       add(new TextField<String>("userName"));
+       add(new PasswordTextField("pass"));
     }
 
     public String getUserName() { return userName; }

@@ -10,7 +10,7 @@ import org.wicketstuff.annotation.mount.MountPath;
  * Page for logging into the application
  */
 @WicketSignInPage
-//@MountPath("/login")
+@MountPath("/login")
 public class LoginPage extends WebPage
 {
 

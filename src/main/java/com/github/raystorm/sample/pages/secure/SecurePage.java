@@ -5,7 +5,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/secure/page")
-public class SecurePage extends WebPage {
+public class SecurePage extends BaseSecuredPage {
 
     public SecurePage()
     {
