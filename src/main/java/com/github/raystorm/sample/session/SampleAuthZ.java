@@ -23,7 +23,8 @@ public class SampleAuthZ implements IAuthorizationStrategy,
     public <T extends IRequestableComponent> boolean isInstantiationAuthorized(Class<T> componentClass)
     {
        if ( componentClass.isAssignableFrom(WebPage.class)
-         && componentClass.getPackageName().startsWith("com.github.raystorm.sample.pages.secure"))
+         && componentClass.getPackageName()
+                          .startsWith("com.github.raystorm.sample.pages.secure"))
        { return SampleSession.get().isAuthenticated(); }
        return true;
     }
