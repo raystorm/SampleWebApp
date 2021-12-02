@@ -1,5 +1,6 @@
 package com.github.raystorm.sample.session;
 
+import com.github.raystorm.sample.daos.SampleUser;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;

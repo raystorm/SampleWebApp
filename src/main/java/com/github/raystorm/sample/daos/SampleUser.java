@@ -1,7 +1,7 @@
-package com.github.raystorm.sample.session;
+package com.github.raystorm.sample.daos;
 
 import java.io.Serializable;
-import javax.p
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,7 +15,7 @@ public class SampleUser implements Serializable
     private String userName;
 
     //TODO: byte[] w/ fancy erasure and scramble logic, HASH this value
-    private transient String pass;
+    private String pass;
 
     private String name;
 
@@ -50,4 +50,19 @@ public class SampleUser implements Serializable
     public String getEmail() { return email; }
 
     public void setEmail(String email) { this.email = email; }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) { return true; }
+        if (!(o instanceof SampleUser)) { return false; }
+
+        SampleUser that = (SampleUser) o;
+        return Objects.equals(userName, that.userName)
+             && Objects.equals(name, that.name)
+             && Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() { return Objects.hash(userName, name, email); }
 }

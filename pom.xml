@@ -10,7 +10,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.0</version>
-        <relativePath/>
+        <!-- <relativePath/>-->
     </parent>
 
     <groupId>com.github.raystorm</groupId>
@@ -39,6 +39,22 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-core</artifactId>
+            <version>9.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-auth-roles</artifactId>
+            <version>9.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-spring</artifactId>
+            <version>9.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
             <version>2.4.0</version>
@@ -59,13 +75,21 @@
         <dependency>
             <groupId>org.wicketstuff</groupId>
             <artifactId>wicketstuff-annotation</artifactId>
-            <version>9.6.0</version>
+            <version>9.0.0</version>
         </dependency>
 
+
         <dependency>
-          <groupId>org.springframework.data</groupId>
-          <artifactId>spring-data-jpa</artifactId>
-          <version>2.6.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <!-- In a REAL APP make this a local depedency,
@@ -76,13 +100,15 @@
             <version>1.4.200</version>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>6.0</version>
-            <!-- <scope>provided</scope> -->
+            <! - - <scope>provided</scope>  - - >
+            <scope>compile</scope>
         </dependency>
-
+        -->
 
     </dependencies>
 

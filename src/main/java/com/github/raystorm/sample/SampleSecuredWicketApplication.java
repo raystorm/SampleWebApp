@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 /**
- *  Secure the Application
+ *  Setup the Application
  */
 @Component
 public class SampleSecuredWicketApplication extends WicketBootStandardWebApplication
-       //extends WicketBootSecuredWebApplication
+       //extends WicketBootSecuredWebApplication //TODO: REAL APP Integrate and Leverage Spring-Security
 {
    @Override
    protected void init()

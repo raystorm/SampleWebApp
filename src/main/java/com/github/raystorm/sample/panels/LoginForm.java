@@ -1,20 +1,23 @@
 package com.github.raystorm.sample.panels;
 
+import com.github.raystorm.sample.daos.SampleUserRepo;
 import com.github.raystorm.sample.session.SampleSession;
-import com.github.raystorm.sample.session.SampleUser;
-import org.apache.wicket.MarkupContainer;
+import com.github.raystorm.sample.daos.SampleUser;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class LoginForm extends StatelessForm
 {
+    @SpringBean
+    private SampleUserRepo userRepo;
+
     private String userName;
     private String pass;
 
-    public LoginForm(String id)
+    public LoginForm(final String id)
     {
         super(id);
         setModel(new CompoundPropertyModel(this));
@@ -22,13 +25,21 @@ public class LoginForm extends StatelessForm
         add(new PasswordTextField(pass));
     }
 
+    public String getUserName() { return userName; }
+
+    public void setUserName(String userName) { this.userName = userName; }
+
+    public String getPass() { return pass; }
+
+    public void setPass(String pass) { this.pass = pass; }
+
     @Override
     protected void onSubmit()
     {
         super.onSubmit();
 
         SampleUser user = null;
-        if ( null != (user = userRepo.findByUserNameAndAndPass(userName, pass)))
+        if ( null != (user = userRepo.findByUserNameAndPass(userName, pass)))
         {
             SampleSession session = SampleSession.get();
             session.setUser(user);
